@@ -51,7 +51,7 @@ tbody tr:nth-child(odd) {
 
 .grid-panel {
   display: grid;
-  grid-template-columns: 7fr 1fr;
+  grid-template-columns: 10fr 1fr;
 }
 
 .grid-panel-left {
