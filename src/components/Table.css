@@ -1,0 +1,62 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: gray;
+}
+
+table th {
+  height: 40px;
+  border: 1px solid lightgrey;
+  color: black;
+}
+
+table td {
+  text-align: center;
+  border: 1px solid lightgrey;
+  height: 28px;
+}
+
+table tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+.body-scroll {
+  height: calc(100vh - 400px);
+}
+
+table thead {
+  display: table;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fbfdff;
+}
+
+.header {
+  background-color: #E5E8EB;
+  font-weight: 500;
+}
+
+.selected {
+  background-color: #238551;
+  color: white;
+}
+
+.value {
+  font-weight: 600;
+}
+
+.grid-panel {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+}
+
+.grid-panel-left {
+  position: relative;
+  top: 5px;
+  display: grid;
+  grid-template-columns: 200px 190px 200px;
+}
