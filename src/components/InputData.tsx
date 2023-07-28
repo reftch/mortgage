@@ -1,4 +1,4 @@
-import { Button, Card, ControlGroup, FormGroup, NumericInput } from "@blueprintjs/core";
+import { Button, Card, FormGroup, NumericInput } from "@blueprintjs/core";
 import { useState } from "react";
 import "./InputData.css";
 
