@@ -1,5 +1,6 @@
 import { Button, Card, ControlGroup, FormGroup, NumericInput } from "@blueprintjs/core";
 import { useState } from "react";
+import "./InputData.css";
 
 const InputData = ({ ...props }) => {
   const [amount, setAmount] = useState(500000);
@@ -46,41 +47,43 @@ const InputData = ({ ...props }) => {
   return (
     <>
     <Card className="input-data-area1" interactive={false}>
-      <ControlGroup fill={false} vertical={false}>
-        <FormGroup
-          className="input-card"
-          helperText="Enter the principal amount"
-          label="Mortgage debt"
-          labelFor="text-input"
-          labelInfo="(required)"
-        >
-          <NumericInput
-            allowNumericCharactersOnly={false}
-            onValueChange={handleAmountChange}
-            leftIcon="euro"
-            min={100000}
-            majorStepSize={10000}
-            stepSize={1000}
-            value={amount}
-          />
-        </FormGroup>
-        <FormGroup
-          className="input-card"
-          helperText="Enter the principal interest rate"
-          label="Rate, %"
-          labelFor="text-input"
-          labelInfo="(required)"
-        >
-          <NumericInput
-            allowNumericCharactersOnly={true}
-            onValueChange={handleRateChange}
-            // leftIcon="percent"
-            minorStepSize={0.1}
-            stepSize={0.1}
-            min={1}
-            value={rate}
-          />
-        </FormGroup>
+      {/* <ControlGroup fill={false} vertical={false}> */}
+      <div className="wrapper">
+          <FormGroup
+            className="input-card"
+            helperText="Enter the principal amount"
+            label="Mortgage debt"
+            labelFor="text-input"
+            labelInfo="(required)"
+          >
+            <NumericInput
+              allowNumericCharactersOnly={false}
+              onValueChange={handleAmountChange}
+              leftIcon="euro"
+              min={100000}
+              majorStepSize={10000}
+              stepSize={1000}
+              value={amount}
+            />
+          </FormGroup>
+          <FormGroup
+            className="input-card"
+            helperText="Enter the principal interest rate"
+            label="Rate, %"
+            labelFor="text-input"
+            labelInfo="(required)"
+          >
+            <NumericInput
+              allowNumericCharactersOnly={true}
+              onValueChange={handleRateChange}
+              // leftIcon="percent"
+              minorStepSize={0.1}
+              stepSize={0.1}
+              min={1}
+              value={rate}
+            />
+          </FormGroup>
+
         <FormGroup
           className="input-card"
           helperText="Enter the term in years"
@@ -110,7 +113,8 @@ const InputData = ({ ...props }) => {
             value={overpayment}
           />
         </FormGroup>
-      </ControlGroup>
+      {/* </ControlGroup> */}
+      </div>
 
       <FormGroup
           className="input-card input-data-area"

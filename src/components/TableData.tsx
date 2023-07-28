@@ -3,7 +3,7 @@ import { IInputData } from "../App";
 import "./Table.css";
 import { useEffect, useState } from "react";
 
-type Row = { cells: Array<{value: number, width: number}> };
+type Row = { cells: Array<{ value: number; width: number }> };
 
 const headers = [
   { title: "Year", width: 60 },
@@ -80,7 +80,11 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
       <thead>
         <tr>
           {headers.map((h) => (
-            <th className="header" key={h.title} style={{ width: `${h.width}px`}}>
+            <th
+              className="header"
+              key={h.title}
+              style={{ width: `${h.width}px` }}
+            >
               {h.title}
             </th>
           ))}
@@ -91,44 +95,51 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
 
   const renderRow = (row: Row, index: number) => {
     return (
-      <tr key={index} className={row.cells[7].value > 0 ? 'selected': ''}>
+      <tr key={index} className={row.cells[7].value > 0 ? "selected" : ""}>
         {row.cells.map((cell) => (
-          <td key={Math.floor(Math.random() * 100000)} style={{ width: `${cell.width}px`}}>{cell.value}</td>
+          <td
+            key={Math.floor(Math.random() * 100000)}
+            style={{ width: `${cell.width}px` }}
+          >
+            {cell.value}
+          </td>
         ))}
       </tr>
     );
   };
 
-
   const renderBody = () => {
     return (
       // <tbody style={{ height: `${window.innerHeight - 400}px`}}>{data?.map((row, index) => renderRow(row, index))}</tbody>
-      <tbody className="body-scroll">{data?.map((row, index) => renderRow(row, index))}</tbody>
-    )
+      <tbody className="body-scroll">
+        {data?.map((row, index) => renderRow(row, index))}
+      </tbody>
+    );
   };
 
   const printSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     window.print();
-  }
+  };
 
   const renderOverall = () => {
     return (
       <Card interactive={false}>
         <div className="grid-panel">
-          <div className="grid-panel-left">
-            <div className="chapter">
-              <span className="title">Total to payment: </span><span className="value">{overall.toFixed(0)}€</span>
-            </div>
-            <div className="chapter">
-              <span className="title">Over payment: </span><span className="value">{(overall - amount).toFixed(0)}€</span>
-            </div>
-            <div className="chapter">
-              <span className="title">First payment: </span><span className="value">{(amount * 0.07).toFixed(0)}€</span>
-            </div>
+          <div className="chapter">
+            <span className="title">Total to payment: </span>
+            <span className="value">{overall.toFixed(0)}€</span>
+          </div>
+          <div className="chapter">
+            <span className="title">Over payment: </span>
+            <span className="value">{(overall - amount).toFixed(0)}€</span>
+          </div>
+          <div className="chapter">
+            <span className="title">First payment: </span>
+            <span className="value">{(amount * 0.07).toFixed(0)}€</span>
           </div>
           <div className="input-data-area">
-            <Button icon="print" text="Print" onClick={printSubmit}/>
+            <Button icon="print" text="Print" onClick={printSubmit} />
           </div>
         </div>
       </Card>

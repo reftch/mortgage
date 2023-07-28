@@ -3,6 +3,8 @@
 
 body {
   max-width: 920px;
+  min-width: 600px;
+  overflow: auto;
   margin: auto;
 }
 
@@ -14,18 +16,11 @@ body {
   padding: 0.5em;
 }
 
-.bp5-button {
+/* .bp5-button {
   margin-right: 15px;
 }
 .bp5-input-group {
   width: 170px;
-}
-
-/* .bp5-form-content {
-  width: 220px;
-}
-.bp5-input {
-  width: 200px;
 } */
 
 @media (prefers-color-scheme: light) {

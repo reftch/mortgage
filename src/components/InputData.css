@@ -1,0 +1,19 @@
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 24% 24% 24% 24%;
+  gap: 10px;
+}
+
+.bp5-button {
+  margin-right: 15px;
+}
+.bp5-input-group {
+  width: 170px;
+}
+
+@media (max-width: 920px) {
+  .wrapper {
+    grid-template-columns: 50% 50%;
+  }
+}
