@@ -1,7 +1,8 @@
-import { Button, Card, FormGroup } from "@blueprintjs/core";
+import { useEffect, useState } from "react";
+import { Card, FormGroup } from "@blueprintjs/core";
+import { v4 as uuidv4 } from 'uuid';
 import { IInputData } from "../App";
 import "./Table.css";
-import { useEffect, useState } from "react";
 
 type Row = { cells: Array<{ value: number; width: number }> };
 
@@ -75,6 +76,7 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
     return (rate * amount) / (1 - Math.pow(1 + rate, -months));
   };
 
+
   const renderHeader = () => {
     return (
       <thead>
@@ -93,12 +95,12 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
     );
   };
 
-  const renderRow = (row: Row, index: number) => {
+  const renderRow = (row: Row) => {
     return (
-      <tr key={index} className={row.cells[7].value > 0 ? "selected" : ""}>
+      <tr key={uuidv4()} className={row.cells[7].value > 0 ? "selected" : ""}>
         {row.cells.map((cell) => (
           <td
-            key={Math.floor(Math.random() * 100000)}
+            key={uuidv4()}
             style={{ width: `${cell.width}px` }}
           >
             {cell.value}
@@ -110,38 +112,21 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
 
   const renderBody = () => {
     return (
-      // <tbody style={{ height: `${window.innerHeight - 400}px`}}>{data?.map((row, index) => renderRow(row, index))}</tbody>
       <tbody className="body-scroll">
-        {data?.map((row, index) => renderRow(row, index))}
+        {data?.map((row) => renderRow(row))}
       </tbody>
     );
-  };
-
-  const printSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    window.print();
   };
 
   const renderOverall = () => {
     return (
       <Card interactive={false}>
-        <div className="grid-panel">
-          <div className="chapter">
-            <span className="title">Total to payment: </span>
-            <span className="value">{overall.toFixed(0)}€</span>
-          </div>
-          <div className="chapter">
-            <span className="title">Over payment: </span>
-            <span className="value">{(overall - amount).toFixed(0)}€</span>
-          </div>
-          <div className="chapter">
-            <span className="title">First payment: </span>
-            <span className="value">{(amount * 0.07).toFixed(0)}€</span>
-          </div>
-          <div className="input-data-area">
-            <Button icon="print" text="Print" onClick={printSubmit} />
-          </div>
-        </div>
+        <span className="title">Total to payment: </span>
+        <span className="value">{overall.toFixed(0)}€</span>
+        <span className="title">, Over payment: </span>
+        <span className="value">{(overall - amount).toFixed(0)}€</span>
+        <span className="title">, First payment: </span>
+        <span className="value">{(amount * 0.07).toFixed(0)}€</span>
       </Card>
     );
   };

@@ -2,7 +2,7 @@
   "name": "mortgage",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,7 +13,8 @@
     "@blueprintjs/core": "^5.1.5",
     "@blueprintjs/docs-theme": "^5.0.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

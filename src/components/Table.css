@@ -24,7 +24,7 @@ table tbody {
 }
 
 .body-scroll {
-  height: calc(100vh - 400px);
+  height: calc(100vh - 320px);
 }
 
 table thead {
@@ -47,11 +47,6 @@ tbody tr:nth-child(odd) {
 
 .value {
   font-weight: 600;
-}
-
-.grid-panel {
-  display: grid;
-  grid-template-columns: 200px 190px 200px auto;
 }
 
 .chapter {

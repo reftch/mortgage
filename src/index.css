@@ -16,13 +16,6 @@ body {
   padding: 0.5em;
 }
 
-/* .bp5-button {
-  margin-right: 15px;
-}
-.bp5-input-group {
-  width: 170px;
-} */
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
