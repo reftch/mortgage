@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, FormGroup, NumericInput } from "@blueprintjs/core";
+import { Card, FormGroup, NumericInput } from "@blueprintjs/core";
 import "./InputData.css";
 
 const InputData = ({ ...props }) => {
@@ -18,33 +18,34 @@ const InputData = ({ ...props }) => {
   }, [amount, rate, years, overpayment]);
 
   const handleAmountChange = (valueAsNumber: number, valueAsString: string) => {
+    console.debug(valueAsNumber);
     setAmount(valueAsString);
   };
 
   const handleRateChange = (valueAsNumber: number, valueAsString: string) => {
+    console.debug(valueAsNumber);
     setRate(valueAsString);
   };
 
   const handleYearsChange = (valueAsNumber: number, valueAsString: string) => {
+    console.debug(valueAsNumber);
     setYears(valueAsString);
   };
 
-  const handleOverpaymentChange = (
-    valueAsNumber: number,
-    valueAsString: string
-  ) => {
+  const handleOverpaymentChange = (valueAsNumber: number, valueAsString: string) => {
+    console.debug(valueAsNumber);
     setOverpayment(valueAsString);
   };
 
-  const calculateSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    props.onSubmit({
-      amount: Number(amount),
-      rate: Number(rate),
-      years: Number(years),
-      overpayment: Number(overpayment),
-    });
-  };
+  // const calculateSubmit = (e: React.SyntheticEvent) => {
+  //   e.preventDefault();
+  //   props.onSubmit({
+  //     amount: Number(amount),
+  //     rate: Number(rate),
+  //     years: Number(years),
+  //     overpayment: Number(overpayment),
+  //   });
+  // };
 
   // const resetSubmit = (e: React.SyntheticEvent) => {
   //   e.preventDefault();
@@ -56,10 +57,10 @@ const InputData = ({ ...props }) => {
   //   });
   // }
 
-  const printSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    window.print();
-  };
+  // const printSubmit = (e: React.SyntheticEvent) => {
+  //   e.preventDefault();
+  //   window.print();
+  // };
 
   return (
     <>
