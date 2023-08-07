@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Card, FormGroup, NumericInput } from "@blueprintjs/core";
-import "./InputData.css";
 
 const InputData = ({ ...props }) => {
   const [amount, setAmount] = useState("500000");
@@ -37,46 +36,21 @@ const InputData = ({ ...props }) => {
     setOverpayment(valueAsString);
   };
 
-  // const calculateSubmit = (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  //   props.onSubmit({
-  //     amount: Number(amount),
-  //     rate: Number(rate),
-  //     years: Number(years),
-  //     overpayment: Number(overpayment),
-  //   });
-  // };
-
-  // const resetSubmit = (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  //   props.onSubmit({
-  //     amount: 0,
-  //     rate: 0,
-  //     years: 0,
-  //     overpayment: 0
-  //   });
-  // }
-
-  // const printSubmit = (e: React.SyntheticEvent) => {
-  //   e.preventDefault();
-  //   window.print();
-  // };
-
   return (
     <>
-      <Card className="input-data-area1" interactive={false}>
-        <div className="wrapper">
+      <Card interactive={false}>
+        <div className="input-data-wrapper">
           <FormGroup
             className="input-card"
             helperText="Enter the principal amount"
-            label="Mortgage debt"
+            label="Mortgage debt, €"
             labelFor="text-input"
             labelInfo="(required)"
           >
             <NumericInput
               intent="primary"
               onValueChange={handleAmountChange}
-              leftIcon="euro"
+              // leftIcon="euro"
               min={100000}
               majorStepSize={10000}
               stepSize={1000}
@@ -131,15 +105,6 @@ const InputData = ({ ...props }) => {
             />
           </FormGroup>
         </div>
-
-        {/* <FormGroup className="input-card input-data-area" labelFor="text-input">
-          <Button
-            icon="calculator"
-            text="Recalculate"
-            onClick={calculateSubmit}
-          />
-          <Button icon="print" text="Print" onClick={printSubmit} />
-        </FormGroup> */}
       </Card>
     </>
   );

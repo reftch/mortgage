@@ -1,0 +1,41 @@
+
+.details {
+  &-collapsed {
+    position: relative;
+    top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid lightgrey;
+  }
+  &-control-group {
+    position: relative;
+    top: 10px;
+    display: grid;
+    grid-template-columns: 260px 150px 180px 260px;
+    gap: 10px;
+  }
+
+  &-form-group {
+    position: relative;
+    padding: 15px 0px 0px 0px;
+  }
+
+  &-button {
+    padding-left: 20px;
+  }
+
+  &-value {
+    font-weight: 500;
+  }
+
+  &-button {
+    width: 250px;
+    text-align: left;
+  }
+
+  @media (max-width: 920px) {
+    &-control-group {
+      grid-template-columns: 50% 50%;
+    }
+  }
+
+}

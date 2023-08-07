@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Card, FormGroup } from "@blueprintjs/core";
 import { v4 as uuidv4 } from 'uuid';
-import { IInputData } from "../App";
-import "./Table.css";
+import { IDetailsData, IInputData } from "../App";
+import DetailsData from "./DetailsData";
 
 type Row = { cells: Array<{ value: number; width: number }> };
 
@@ -20,6 +20,10 @@ const headers = [
 const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
   const [data, setData] = useState<Array<Row>>();
   const [overall, setOverall] = useState(0.0);
+  const [notaryFees, setNotaryFees] = useState(1.5);
+  const [landRegister, setLandRegister] = useState(5.0);
+  const [landEntry, setLandEntry] = useState(0.5);
+  const [maklerProvision, setMaklerProvision] = useState(0.0);
 
   useEffect(() => {
     const data = [];
@@ -76,6 +80,27 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
     return (rate * amount) / (1 - Math.pow(1 + rate, -months));
   };
 
+  const detailsChange = (data: IDetailsData) => {
+    // console.log(data.name);
+    switch (data.name) {
+      case 'landRegister': 
+        setLandRegister(Number(data.value));
+        break;
+      case 'landEntry': 
+        setLandEntry(Number(data.value));
+        break;
+      case 'notaryFees': 
+        setNotaryFees(Number(data.value));
+        break;
+      case 'maklerProvision': 
+        setMaklerProvision(Number(data.value));
+        break;
+      default:
+        break;  
+    }
+    
+    // setNotaryFees(data.notaryFees);
+  }
 
   const renderHeader = () => {
     return (
@@ -118,23 +143,18 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
     );
   };
 
-  const renderOverall = () => {
-    return (
-      <Card interactive={false}>
-        <span className="title">Total to payment: </span>
-        <span className="value">{overall.toFixed(0)}€</span>
-        <span className="title">, Over payment: </span>
-        <span className="value">{(overall - amount).toFixed(0)}€</span>
-        <span className="title">, First payment: </span>
-        <span className="value">{(amount * 0.07).toFixed(0)}€</span>
-      </Card>
-    );
-  };
-
   return (
     <>
       <FormGroup>
-        {renderOverall()}
+        <DetailsData 
+          overall={overall} 
+          amount={amount} 
+          notaryFees={notaryFees} 
+          landRegister={landRegister}
+          landEntry={landEntry}
+          maklerProvision={maklerProvision}
+          onChange={detailsChange}
+        ></DetailsData>
         <Card interactive={false}>
           <table>
             {renderHeader()}

@@ -10,6 +10,11 @@ export type IInputData = {
   overpayment: number;
 };
 
+export type IDetailsData = {
+  name: string;
+  value: string;
+}
+
 function App() {
   const [data, setData] = useState<IInputData>({amount: 50000, years: 20, rate: 4.1, overpayment: 5.0});
   
