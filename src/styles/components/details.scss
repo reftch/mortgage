@@ -27,14 +27,9 @@
     font-weight: 500;
   }
 
-  &-button {
-    width: 250px;
-    text-align: left;
-  }
-
   @media (max-width: 920px) {
     &-control-group {
-      grid-template-columns: 50% 50%;
+      grid-template-columns: 49% 49%;
     }
   }
 

@@ -54,6 +54,7 @@ const InputData = ({ ...props }) => {
               min={100000}
               majorStepSize={10000}
               stepSize={1000}
+              fill={true}
               value={amount}
             />
           </FormGroup>
@@ -70,6 +71,7 @@ const InputData = ({ ...props }) => {
               // leftIcon="percentage"
               minorStepSize={0.1}
               stepSize={0.1}
+              fill={true}
               min={1}
               value={rate}
             />
@@ -87,6 +89,7 @@ const InputData = ({ ...props }) => {
               onValueChange={handleYearsChange}
               min={1}
               value={years}
+              fill={true}
             />
           </FormGroup>
           <FormGroup
@@ -102,6 +105,7 @@ const InputData = ({ ...props }) => {
               stepSize={0.1}
               min={0}
               value={overpayment}
+              fill={true}
             />
           </FormGroup>
         </div>
