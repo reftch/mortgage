@@ -99,7 +99,6 @@ const InputData = ({ ...props }) => {
             labelFor="text-input"
           >
             <NumericInput
-              // allowNumericCharactersOnly={true}
               onValueChange={handleOverpaymentChange}
               minorStepSize={0.1}
               stepSize={0.1}

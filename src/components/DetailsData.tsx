@@ -1,13 +1,13 @@
 import {
   Button,
   Card,
-  Collapse,
   FormGroup,
   InputGroup,
   Menu,
   MenuItem,
   NumericInput,
   Popover,
+  Section,
 } from "@blueprintjs/core";
 import { SyntheticEvent, useState } from "react";
 
@@ -41,14 +41,15 @@ const UNSELECTED = {
   title: "Please select",
   rate: 0.0,
   rank: 0,
-  makler: 0.0
+  makler: 0.0,
 };
 
 const DetailsData = ({ ...props }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
   const [selectedGrunderwerbsteuer, setSelectedGrunderwerbsteuer] =
     useState<Grunderwerbsteuer>(GRUNDERWERBSTEUER_LIST[0]);
-  const [selectedMakler, setSelectedMakler] = useState<Grunderwerbsteuer>(UNSELECTED);
+  const [selectedMakler, setSelectedMakler] =
+    useState<Grunderwerbsteuer>(UNSELECTED);
 
   const handleNotaryFeesChange = (
     valueAsNumber: number,
@@ -79,7 +80,6 @@ const DetailsData = ({ ...props }) => {
       name: "landRegister",
       value: GRUNDERWERBSTEUER_LIST[rank - 1].rate,
     });
-
   };
 
   const grunderwerbsteuerMenu = (
@@ -110,8 +110,8 @@ const DetailsData = ({ ...props }) => {
     let makler: Grunderwerbsteuer = UNSELECTED;
     if (rank !== 0) {
       makler = GRUNDERWERBSTEUER_LIST[rank - 1];
-    } 
-    
+    }
+
     setSelectedMakler(makler);
     props.onChange({
       name: "maklerProvision",
@@ -123,12 +123,12 @@ const DetailsData = ({ ...props }) => {
     <Popover
       content={
         <Menu>
-            <MenuItem
-              key={UNSELECTED.rank}
-              text={`${UNSELECTED.title}`}
-              label={`${Number(UNSELECTED.makler).toFixed(2)}%`}
-              onClick={(e) => onChangeMakler(e, 0.0)}
-            />
+          <MenuItem
+            key={UNSELECTED.rank}
+            text={`${UNSELECTED.title}`}
+            label={`${Number(UNSELECTED.makler).toFixed(2)}%`}
+            onClick={(e) => onChangeMakler(e, 0.0)}
+          />
           {GRUNDERWERBSTEUER_LIST.map((g) => (
             <MenuItem
               key={g.rank}
@@ -150,93 +150,85 @@ const DetailsData = ({ ...props }) => {
 
   const renderCollapsed = () => {
     return (
-      <div className="details-collapsed">
-        <div className="details-control-group">
-          <FormGroup
-            className="details-form-group"
-            label="Grunderwerbsteuer, "
-            labelInfo="(required)"
-            inline={false}
-          >
-            <InputGroup
-              disabled={false}
-              readOnly={true}
-              rightElement={grunderwerbsteuerMenu}
-              value={`${Number(selectedGrunderwerbsteuer.rate).toFixed(1)}%`}
-            />
-          </FormGroup>
-          <FormGroup
-            className="details-form-group"
-            label="Notarkosten"
-            labelInfo={`${(props.amount * Number(props.notaryFees)) / 100.0}€`}
-          >
-            <NumericInput
-              onValueChange={handleNotaryFeesChange}
-              min={0}
-              stepSize={0.1}
-              fill={true}
-              value={props.notaryFees}
-            />
-          </FormGroup>
-          <FormGroup
-            className="details-form-group"
-            label="Grundbucheintrag, "
-            labelFor="text-input"
-            labelInfo={`${(props.amount * Number(props.landEntry)) / 100.0}€`}
-          >
-            <NumericInput
-              onValueChange={handleLandEntryChange}
-              min={0}
-              stepSize={0.1}
-              fill={true}
-              value={props.landEntry}
-            />
-          </FormGroup>
-          <FormGroup
-            className="details-form-group"
-            label="Maklerprovision, "
-            labelInfo={`${(props.amount * Number(selectedMakler.makler)) / 100.0}€`}
-            inline={false}
-          >
-            <InputGroup
-              disabled={false}
-              readOnly={true}
-              rightElement={maklerProvisionMenu}
-              value={`${Number(selectedMakler.makler).toFixed(2)}%`}
-            />
-          </FormGroup>
-        </div>
+      <div className="details-control-group">
+        <FormGroup
+          className="details-form-group"
+          label="Grunderwerbsteuer, "
+          labelInfo="(required)"
+          inline={false}
+        >
+          <InputGroup
+            disabled={false}
+            readOnly={true}
+            rightElement={grunderwerbsteuerMenu}
+            value={`${Number(selectedGrunderwerbsteuer.rate).toFixed(1)}%`}
+          />
+        </FormGroup>
+        <FormGroup
+          className="details-form-group"
+          label="Notarkosten"
+          labelInfo={`${(props.amount * Number(props.notaryFees)) / 100.0}€`}
+        >
+          <NumericInput
+            onValueChange={handleNotaryFeesChange}
+            min={0}
+            stepSize={0.1}
+            fill={true}
+            value={props.notaryFees}
+          />
+        </FormGroup>
+        <FormGroup
+          className="details-form-group"
+          label="Grundbucheintrag, "
+          labelFor="text-input"
+          labelInfo={`${(props.amount * Number(props.landEntry)) / 100.0}€`}
+        >
+          <NumericInput
+            onValueChange={handleLandEntryChange}
+            min={0}
+            stepSize={0.1}
+            fill={true}
+            value={props.landEntry}
+          />
+        </FormGroup>
+        <FormGroup
+          className="details-form-group"
+          label="Maklerprovision, "
+          labelInfo={`${
+            (props.amount * Number(selectedMakler.makler)) / 100.0
+          }€`}
+          inline={false}
+        >
+          <InputGroup
+            disabled={false}
+            readOnly={true}
+            rightElement={maklerProvisionMenu}
+            value={`${Number(selectedMakler.makler).toFixed(2)}%`}
+          />
+        </FormGroup>
       </div>
     );
   };
 
+  const getSectionTitle = () => {
+    return `Nettodarlehen: ${props.overall.toFixed(0)}€, Über: ${(
+      props.overall - props.amount
+    ).toFixed(0)}€, Kaufnebenkosten: ${(
+      (props.amount *
+        (props.landEntry +
+          props.landRegister +
+          props.notaryFees +
+          props.maklerProvision)) /
+      100.0
+    ).toFixed(0)}€`;
+  };
+
   return (
-    <>
-      <Card interactive={false}>
-        <span className="title">Total to payment: </span>
-        <span className="value">{props.overall.toFixed(0)}€</span>
-        <span className="title">, Over payment: </span>
-        <span className="value">
-          {(props.overall - props.amount).toFixed(0)}€
-        </span>
-      </Card>
-      <Card interactive={false}>
-        <span className="title">Additional purchase costs: </span>
-        <span className="value">
-          {((props.amount * (props.landEntry + props.landRegister + props.notaryFees + props.maklerProvision)) / 100.0).toFixed(0)}€
-        </span>
-        <span className="details-button">
-          <Button
-            icon={collapsed ? "caret-up" : "caret-down"}
-            onClick={() => setCollapsed(!collapsed)}
-          >
-            {collapsed ? "Hide" : "Show"} details
-          </Button>
-        </span>
-        <Collapse isOpen={collapsed}>{renderCollapsed()}</Collapse>
-      </Card>
-    </>
+    <Section collapsible={true} title={getSectionTitle()} icon="list-detail-view"> 
+      <Card interactive={false}>{renderCollapsed()}</Card>
+    </Section>
   );
 };
 
 export default DetailsData;
+ 

@@ -31,7 +31,7 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
     const months = years * 12;
 
     let balance = amount;
-    let payment = getMonthlyPayment(amount, rate, months);
+    const payment = getMonthlyPayment(amount, rate, months);
     let irPaid, amountPaid, newBalance;
     let overall = 0.0;
 
@@ -46,7 +46,7 @@ const TableData = ({ amount, rate, years, overpayment }: IInputData) => {
 
       let addPayment = 0.0;
 
-      let year = month % 12;
+      const year = month % 12;
       if (year == 0) {
         addPayment = balance * overpayment;
         overall += addPayment;
