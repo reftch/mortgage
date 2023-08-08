@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, FormGroup } from "@blueprintjs/core";
+import { IDetailsData, IInputData } from "../page";
 import { v4 as uuidv4 } from 'uuid';
-import { IDetailsData, IInputData } from "../App";
 import DetailsData from "./DetailsData";
 
 type Row = { cells: Array<{ value: number; width: number }> };
