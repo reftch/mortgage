@@ -1,19 +1,19 @@
+import { Button, Card, FormGroup, NumericInput } from "@blueprintjs/core"
 import { useEffect, useState } from "react";
-import { Card, FormGroup, NumericInput } from "@blueprintjs/core";
 
-const InputData = ({ ...props }) => {
+const SomeElement = ({ ...props }) => {
   const [amount, setAmount] = useState("500000");
   const [rate, setRate] = useState("4.1");
   const [years, setYears] = useState("20");
   const [overpayment, setOverpayment] = useState("5.0");
 
   useEffect(() => {
-    props.onSubmit({
-      amount: Number(amount),
-      rate: Number(rate),
-      years: Number(years),
-      overpayment: Number(overpayment),
-    });
+    // props.onSubmit({
+    //   amount: Number(amount),
+    //   rate: Number(rate),
+    //   years: Number(years),
+    //   overpayment: Number(overpayment),
+    // });
   }, [amount, rate, years, overpayment]);
 
   const handleAmountChange = (valueAsNumber: number, valueAsString: string) => {
@@ -38,9 +38,20 @@ const InputData = ({ ...props }) => {
 
   return (
     <>
-      <Card>
+      <Card interactive={false}>
         <div className="input-data-wrapper">
-          <FormGroup
+        <NumericInput
+              intent="primary"
+              onValueChange={handleAmountChange}
+              leftIcon="euro"
+              min={100000}
+              majorStepSize={10000}
+              stepSize={1000}
+              fill={true}
+              value={amount}
+            />
+
+          {/* <FormGroup
             className="input-card"
             helperText="Enter the principal amount"
             label="Mortgage debt, €"
@@ -49,17 +60,19 @@ const InputData = ({ ...props }) => {
             <NumericInput
               intent="primary"
               onValueChange={handleAmountChange}
+              leftIcon="euro"
               min={100000}
               majorStepSize={10000}
               stepSize={1000}
               fill={true}
               value={amount}
             />
-          </FormGroup>
-          <FormGroup
+          </FormGroup> */}
+          {/* <FormGroup
             className="input-card"
             helperText="Enter the principal interest rate"
             label="Rate, %"
+            labelFor="text-input"
             labelInfo="(required)"
           >
             <NumericInput
@@ -78,6 +91,7 @@ const InputData = ({ ...props }) => {
             className="input-card"
             helperText="Enter the term in years"
             label="Years"
+            labelFor="text-input"
             labelInfo="(required)"
           >
             <NumericInput
@@ -92,6 +106,7 @@ const InputData = ({ ...props }) => {
             className="input-card"
             helperText="Enter the year's overpayment rate"
             label="One-off overpayment, %"
+            labelFor="text-input"
           >
             <NumericInput
               onValueChange={handleOverpaymentChange}
@@ -101,11 +116,11 @@ const InputData = ({ ...props }) => {
               value={overpayment}
               fill={true}
             />
-          </FormGroup>
+          </FormGroup> */}
         </div>
       </Card>
     </>
   );
-};
+}
 
-export default InputData;
+export default SomeElement

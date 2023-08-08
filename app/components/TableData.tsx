@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, FormGroup } from "@blueprintjs/core";
-import { IDetailsData, IInputData } from "../page";
+import { IDetailsData, IInputData } from "./Home";
 import { v4 as uuidv4 } from 'uuid';
 import DetailsData from "./DetailsData";
 
