@@ -7,14 +7,14 @@ import DetailsData from "./DetailsData";
 type Row = { cells: Array<{ value: number; width: number }> };
 
 const headers = [
-  { title: "Year", width: 60 },
-  { title: "Month", width: 80 },
-  { title: "Balance", width: 120 },
-  { title: "Payment", width: 100 },
-  { title: "Interest", width: 100 },
-  { title: "Principal", width: 100 },
-  { title: "New Balance", width: 120 },
-  { title: "One-off Overpayment", width: 200 },
+  { title: "Jahr", width: 60 },
+  { title: "Monat", width: 80 },
+  { title: "Schulden", width: 120 },
+  { title: "Zahlung", width: 100 },
+  { title: "Zinsen", width: 100 },
+  { title: "Kapitalbetrag", width: 100 },
+  { title: "Neue Schulden", width: 120 },
+  { title: "Einmalige Überzahlung", width: 200 },
 ];
 
 const TableData = ({ amount, rate, years, overpayment }: IInputData) => {

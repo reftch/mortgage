@@ -2,8 +2,8 @@ import './styles/index.scss'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Mortage calculator',
-  description: '',
+  title: 'Hypothekenrechner',
+  description: 'Hypothekenrechner',
 }
 
 export default function RootLayout({

@@ -25,6 +25,7 @@ table tbody {
 
 .body-scroll {
   height: calc(100vh - 320px);
+  width: calc(100% + 15px);
 }
 
 table thead {

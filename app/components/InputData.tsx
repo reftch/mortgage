@@ -42,9 +42,9 @@ const InputData = ({ ...props }) => {
         <div className="input-data-wrapper">
           <FormGroup
             className="input-card"
-            helperText="Enter the principal amount"
-            label="Mortgage debt, €"
-            labelInfo="(required)"
+            helperText="Geben Sie den Kapitalbetrag ein"
+            label="Hypothekenschulden, €"
+            labelInfo=""
           >
             <NumericInput
               intent="primary"
@@ -58,9 +58,9 @@ const InputData = ({ ...props }) => {
           </FormGroup>
           <FormGroup
             className="input-card"
-            helperText="Enter the principal interest rate"
-            label="Rate, %"
-            labelInfo="(required)"
+            helperText="Geben Sie den Zinsen ein"
+            label="Zinsen, %"
+            labelInfo="(pflichtfeld)"
           >
             <NumericInput
               allowNumericCharactersOnly={true}
@@ -76,9 +76,9 @@ const InputData = ({ ...props }) => {
 
           <FormGroup
             className="input-card"
-            helperText="Enter the term in years"
-            label="Years"
-            labelInfo="(required)"
+            helperText="Laufzeit in Jahren"
+            label="Jahre"
+            labelInfo="(pflichtfeld)"
           >
             <NumericInput
               allowNumericCharactersOnly={false}
@@ -90,8 +90,8 @@ const InputData = ({ ...props }) => {
           </FormGroup>
           <FormGroup
             className="input-card"
-            helperText="Enter the year's overpayment rate"
-            label="One-off overpayment, %"
+            helperText="Überzahlung des Jahres"
+            label="Einmalige Überzahlung, %"
           >
             <NumericInput
               onValueChange={handleOverpaymentChange}
