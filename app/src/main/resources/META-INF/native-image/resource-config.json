@@ -1,0 +1,15 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "static/.*"
+      },
+      {
+        "pattern": "templates/.*"
+      },
+      {
+        "pattern": "logback.xml"
+      }
+    ]
+  }
+}
