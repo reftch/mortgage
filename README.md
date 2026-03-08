@@ -1,7 +1,7 @@
-# Mortgage-Java
+# Mortgage Calculator
 
 ## Description
-Mortgage-Java is a web-based mortgage calculator application built using Java 25, **Jawisp** framework, and Node.js 24. The application allows users to input mortgage details such as loan amount, interest rate, and loan term to calculate monthly payments, total interest paid, and other financial metrics.
+Mortgage calculator is a web-based mortgage calculator application built using Java 25, **Jawisp** framework, and Node.js 24. The application allows users to input mortgage details such as loan amount, interest rate, and loan term to calculate monthly payments, total interest paid, and other financial metrics.
 
 ## Features
 - **Mortgage Calculation**: Calculate monthly mortgage payments, total interest paid, and other financial metrics.
@@ -34,15 +34,6 @@ cd mortgage-java
 
 ### 4. Access the Application
 Open your web browser and navigate to `http://localhost:8080` to access the Mortgage Calculator.
-
-## Contributing
-We welcome contributions from the community! Please follow these guidelines:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your changes to your fork.
-5. Create a pull request to the main repository.
 
 ## License
 This project is licensed under the [Apache 2.0 License](LICENSE).
